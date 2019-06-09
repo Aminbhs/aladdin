@@ -7,10 +7,15 @@ function findGetParameter() {
         .forEach(function (item) {
           tmp = item.split("=");
           result = decodeURIComponent(tmp[1]);
-        if (document.getElementById(tmp[0])) document.getElementById(tmp[0]).innerHTML = result
+        if (document.getElementById(tmp[0]))    {
+            if (document.getElementById(tmp[0]).tagName == "IMG") {
+                document.getElementById(tmp[0]).setAttribute("src", result);
+                console.log(tmp[1])
+            } else {
+                document.getElementById(tmp[0]).innerHTML = result
+            }
+        }
         });
-    return result;
 }
-
 findGetParameter()
 
